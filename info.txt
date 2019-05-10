@@ -1,0 +1,8 @@
+Register mouse event handlers on the panel.
+In each handler print the event type and
+and mouse pointer coordinates. Notify when dragging
+by checking if the mouse button is held down
+during the mouse move event. It is not possible to
+see the click event firing because the mouse up
+event fires immediately after and overwrites
+the click notification.

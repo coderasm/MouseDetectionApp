@@ -13,7 +13,7 @@ namespace MouseDetectionApp
   public partial class Form1 : Form
   {
     private Point mousePosition = new Point(0, 0);
-    private bool dragging = false;
+    //for dragging
     private bool mouseDown = false;
     public Form1()
     {
@@ -24,7 +24,7 @@ namespace MouseDetectionApp
 
     private void onClick(object sender, MouseEventArgs e)
     {
-
+      eventLabel.Text = $"Clicked at [{e.X}, {e.Y}]";
     }
 
     private void onMouseDown(object sender, MouseEventArgs e)
@@ -50,12 +50,14 @@ namespace MouseDetectionApp
 
     private void onMouseMove(object sender, MouseEventArgs e)
     {
+      //fix for constant triggering of mouse movement
       if ((Panel)sender == panel &&
         e.X != mousePosition.X &&
         e.Y != mousePosition.Y
         )
       {
         mousePosition = new Point(e.X, e.Y);
+        //dragging
         if (mouseDown)
           eventLabel.Text = $"Dragged at [{e.X}, {e.Y}]";
         else
